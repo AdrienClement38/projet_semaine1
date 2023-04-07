@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Address index{% endblock %}
+
+{% block body %}
+
+    <header><a href="{{ path('app_display') }}"><button>retour au dashboard</button></a></header>
+
+    <h1>Address index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>Zip</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for address in addresses %}
+            <tr>
+                <td>{{ address.id }}</td>
+                <td>{{ address.street }}</td>
+                <td>{{ address.city }}</td>
+                <td>{{ address.zip }}</td>
+                <td>
+                    <a href="{{ path('app_address_show', {'id': address.id}) }}"><button>show</button></a>
+                    <a href="{{ path('app_address_edit', {'id': address.id}) }}"><button>edit</button></a>
+                    <a href="{{ path('app_address_delete', {'id': address.id}) }}"><button>delete</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_address_new') }}"><button>Create new</button></a>
+{% endblock %}

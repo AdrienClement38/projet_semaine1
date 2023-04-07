@@ -15,12 +15,20 @@
 </header>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Hello {{ app.user.pseudo }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/adrib/OneDrive/Documents/Perso/Dev_Web/3WA/Cours/Symfony/projet_fin_semaine/projet_semaine1/src/Controller/DisplayController.php'|file_link(0) }}">src/Controller/DisplayController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/adrib/OneDrive/Documents/Perso/Dev_Web/3WA/Cours/Symfony/projet_fin_semaine/projet_semaine1/templates/display/index.html.twig'|file_link(0) }}">templates/display/index.html.twig</a></code></li>
-    </ul>
+        <ul>
+            <li>Mail : {{ app.user.email }}</li>
+            <li>amount : {{ app.user.wallet.amount }}</li>
+
+            {% for address in app.user.addresses %}
+                <li>adresse : {{ address.street }}, {{ address.zip }} {{ address.city }}</li>
+            {% endfor %}
+            
+        </ul>
+
+    <a href="{{ path('app_address_index')}}"><button>crud adresses</button></a>
+
+    
 </div>
 {% endblock %}

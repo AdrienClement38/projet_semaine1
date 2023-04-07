@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Address{% endblock %}
+
+{% block body %}
+
+    <header><a href="{{ path('app_display') }}"><button>retour au dashboard</button></a></header>
+
+    <h1>Create new Address</h1>
+
+    {{ include('address/_form.html.twig') }}
+
+    <a href="{{ path('app_address_index') }}"><button>back to list</button></a>
+{% endblock %}

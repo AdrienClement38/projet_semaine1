@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Entity\Bank;
+use App\Entity\Wallet;
+
+
 
 class RegistrationController extends AbstractController
 {
@@ -29,6 +33,8 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $wallet = new Wallet();
+            $wallet->setAmount(100);
 
             $entityManager->persist($user);
             $entityManager->flush();
